@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import "materialize-css/dist/css/materialize.css"
+import "materialize-css/dist/css/materialize.css";
+import "material-design-icons/iconfont/material-icons.css";
+import jquery from 'jquery';
+
+window.$ = window.jQuery = jquery;
+
+require("jquery-slimscroll");
+require("materialize-css/js/velocity.min.js")
+require("materialize-css/js/buttons.js");
 
 class FixedActionsButton extends Component{
 
