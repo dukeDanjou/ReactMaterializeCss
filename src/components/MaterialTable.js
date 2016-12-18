@@ -8,11 +8,23 @@ class MaterialTable extends Component{
     super(props);
     this.mapHeader = this.mapHeader.bind(this);
     this.mapRow = this.mapRow.bind(this);
+    this.onSort = this.onSort.bind(this);
+  }
+
+  onSort(event, column){
+    event.preventDefault();
+    this.props.onClickSort(column);
   }
 
   mapHeader(column, index){
-    let iconSort = column.sortOrder ? column.sortOrder === "ASC" ? "arrow_drop_up" : "arrow_drop_down" : "sort";
-    return <th key={index}>{column.title}<i style={{float:"right", cursor: "pointer"}} className="material-icons">{iconSort}</i></th>
+
+    let iconSort, sortButton  = null;
+
+    if(this.props.onClickSort){
+      iconSort = column.sortOrder ? column.sortOrder === "ASC" ? "arrow_drop_up" : "arrow_drop_down" : "sort";
+      sortButton = <i onClick={(e) => this.onSort(e, column)} style={{float:"right", cursor: "pointer"}} className="material-icons">{iconSort}</i>
+    }
+    return <th key={index}>{column.title}{sortButton}</th>
   }
 
   mapRow(row, index){

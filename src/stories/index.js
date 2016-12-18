@@ -34,7 +34,7 @@ storiesOf('Button', module)
   ));
 
   storiesOf('MaterialTable', module)
-    .add('MaterialTable view', () => {
+    .add('MaterialTable view no sorting', () => {
       const table = {
           columns : [
               {
@@ -104,7 +104,7 @@ storiesOf('Button', module)
            }
         ]
     }
-    return <MaterialTable rows={table.rows} columns={table.columns} />
+    return <MaterialTable  onClickSort={action('sorting')} rows={table.rows} columns={table.columns} />
 });
 
   storiesOf('SideNav', module)
