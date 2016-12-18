@@ -6,41 +6,9 @@ import '../index.css';
 import App from '../App';
 import FixedActionsButton from "../components/FixedActionsButton";
 import MaterialTable from "../components/MaterialTable";
+import SideNav from "../components/SideNav"
+import FilterForm from "../components/FilterForm"
 
-
-const table = {
-    columns : [
-        {
-          title : "Name",
-          id : "id"
-        },
-        {
-          title : "Item Name",
-          id : "name"
-        },
-        {
-          title : "Item price",
-          id : "price"
-        }
-    ],
-    rows : [
-       {
-          id : "Alvin",
-          name : "Eclair",
-          price : "$0.87"
-       },
-       {
-          id : "Alan",
-          name : "Jellybean",
-          price : "$3.76"
-       },
-       {
-          id : "Jonathan",
-          name : "Lollipop",
-          price : "$7.00"
-       }
-    ]
-}
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
@@ -58,15 +26,52 @@ storiesOf('Button', module)
   storiesOf('App', module)
     .add('default view', () => (
       <App />
-    ))
+    ));
 
   storiesOf('FixedActionsButton', module)
     .add('FixedActionsButton view', () => (
       <FixedActionsButton />
-  ))
+  ));
 
   storiesOf('MaterialTable', module)
-    .add('MaterialTable view', () => (
+    .add('MaterialTable view', () => {
+      const table = {
+          columns : [
+              {
+                title : "Name",
+                id : "id"
+              },
+              {
+                title : "Item Name",
+                id : "name"
+              },
+              {
+                title : "Item price",
+                id : "price"
+              }
+          ],
+          rows : [
+             {
+                id : "Alvin",
+                name : "Eclair",
+                price : "$0.87"
+             },
+             {
+                id : "Alan",
+                name : "Jellybean",
+                price : "$3.76"
+             },
+             {
+                id : "Jonathan",
+                name : "Lollipop",
+                price : "$7.00"
+             }
+          ]
+      }
+      return <MaterialTable rows={table.rows} columns={table.columns} />
+  });
 
-      <MaterialTable rows={table.rows} columns={table.columns} />
-  ))
+  storiesOf('SideNav', module)
+  .add('Side nav', () => (
+    <SideNav icon='filter_list'><FilterForm/></SideNav>
+  ));
