@@ -2,12 +2,11 @@ import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
 import Welcome from './Welcome';
-import '../index.css';
-import App from '../App';
 import FixedActionsButton from "../components/FixedActionsButton";
 import MaterialTable from "../components/MaterialTable";
-import SideNav from "../components/SideNav"
-import FilterForm from "../components/FilterForm"
+import SideNav from "../components/SideNav";
+import FilterForm from "../components/FilterForm";
+import MaterialChip from "../components/MaterialChip";
 
 
 storiesOf('Welcome', module)
@@ -22,11 +21,6 @@ storiesOf('Button', module)
   .add('with some emoji', () => (
     <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>
   ));
-
-  storiesOf('App', module)
-    .add('default view', () => (
-      <App />
-    ));
 
   storiesOf('FixedActionsButton', module)
     .add('FixedActionsButton view', () => (
@@ -110,4 +104,12 @@ storiesOf('Button', module)
   storiesOf('SideNav', module)
   .add('Side nav', () => (
     <SideNav icon='filter_list'><FilterForm/></SideNav>
+  ));
+
+  storiesOf('MaterialChip', module)
+  .add('Material Chip default', () => (
+    <MaterialChip>Text</MaterialChip>
+  ))
+  .add('Material Chip closable', () => (
+    <MaterialChip data={{id:'id', value:'value'}} onClickClose={action('close chip')} isClosable={true}>Chip text</MaterialChip>
   ));
