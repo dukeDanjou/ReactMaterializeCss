@@ -34,7 +34,6 @@ class SideNav extends Component{
      </a>
    </div>
   }
-
 }
 
 SideNav.defaultProps = {

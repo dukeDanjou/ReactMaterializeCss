@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "materialize-css/dist/css/materialize.css";
+import "material-design-icons/iconfont/material-icons.css";
 
 class MaterialTable extends Component{
 
@@ -10,7 +11,8 @@ class MaterialTable extends Component{
   }
 
   mapHeader(column, index){
-    return <th key={index}>{column.title}</th>
+    let iconSort = column.sortOrder ? column.sortOrder === "ASC" ? "arrow_drop_up" : "arrow_drop_down" : "sort";
+    return <th key={index}>{column.title}<i style={{float:"right", cursor: "pointer"}} className="material-icons">{iconSort}</i></th>
   }
 
   mapRow(row, index){
@@ -22,20 +24,20 @@ class MaterialTable extends Component{
           }
       )
     }
-  </tr>
-}
+    </tr>
+  }
 
   render(){
-    return <table>
-        <thead>
-          <tr>
-              {this.props.columns.map(this.mapHeader)}
-          </tr>
-        </thead>
-        <tbody>
-              {this.props.rows.map(this.mapRow)}
-        </tbody>
-      </table>
+    return <table className="highlight">
+              <thead>
+                <tr>
+                    {this.props.columns.map(this.mapHeader)}
+                </tr>
+              </thead>
+              <tbody>
+                    {this.props.rows.map(this.mapRow)}
+              </tbody>
+           </table>
   }
 }
 export default MaterialTable

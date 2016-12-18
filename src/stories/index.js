@@ -69,7 +69,43 @@ storiesOf('Button', module)
           ]
       }
       return <MaterialTable rows={table.rows} columns={table.columns} />
-  });
+  }).add('MaterialTable sort asc name', () => {
+    const table = {
+        columns : [
+            {
+              title : "Name",
+              id : "id",
+              sortOrder : "ASC"
+            },
+            {
+              title : "Item Name",
+              id : "name"
+            },
+            {
+              title : "Item price",
+              id : "price"
+            }
+        ],
+        rows : [
+          {
+             id : "Alan",
+             name : "Jellybean",
+             price : "$3.76"
+          },
+           {
+              id : "Alvin",
+              name : "Eclair",
+              price : "$0.87"
+           },
+           {
+              id : "Jonathan",
+              name : "Lollipop",
+              price : "$7.00"
+           }
+        ]
+    }
+    return <MaterialTable rows={table.rows} columns={table.columns} />
+});
 
   storiesOf('SideNav', module)
   .add('Side nav', () => (
